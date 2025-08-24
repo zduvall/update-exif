@@ -30,6 +30,7 @@ The tool provides two main commands: `read` and `update`.
 ### Reading EXIF Data
 
 To view the EXIF data of a photo:
+
 ```sh
 exif read <path/to/photo.jpg>
 ```
@@ -37,6 +38,7 @@ exif read <path/to/photo.jpg>
 ### Updating EXIF Data
 
 To update the 'date taken' information:
+
 ```sh
 exif update <path/to/photo.jpg> "<YYYY:MM:DD HH:MM:SS>"
 ```
@@ -46,6 +48,23 @@ exif update <path/to/photo.jpg> "<YYYY:MM:DD HH:MM:SS>"
 ```sh
 exif update "images/IMG_1234.jpg" "2024:07:22 10:30:00"
 ```
+
+#### Example with Timezone
+
+To update the date and specify a timezone (e.g., New York time):
+
+```sh
+exif update "images/IMG_1234.jpg" "2024:07:22 10:30:00" -tz "America/New_York"
+```
+
+US Timezones for quick reference:
+
+- `America/New_York`
+- `America/Chicago`
+- `America/Denver`
+- `America/Los_Angeles`
+
+### Help
 
 You can get more information about any command and its arguments with `--help`:
 
