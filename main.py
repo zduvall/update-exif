@@ -11,12 +11,22 @@ app = typer.Typer(
 )
 
 def validate_date(date_str: str) -> str:
-    """Callback to validate the date format."""
+    """Callback to validate and normalize the date format."""
     try:
+        # First, try the full datetime format
         datetime.strptime(date_str, "%Y:%m:%d %H:%M:%S")
         return date_str
     except ValueError:
-        raise typer.BadParameter("Date must be in 'YYYY:MM:DD HH:MM:SS' format.")
+        # If that fails, try the date-only format
+        try:
+            datetime.strptime(date_str, "%Y:%m:%d")
+            # If successful, append the default time
+            return f"{date_str} 12:00:00"
+        except ValueError:
+            # If both fail, raise an error
+            raise typer.BadParameter(
+                "Date must be in 'YYYY:MM:DD HH:MM:SS' or 'YYYY:MM:DD' format."
+            )
 
 @app.command()
 def read(
@@ -87,7 +97,7 @@ def update(
     new_date: str = typer.Argument(
         ...,
         callback=validate_date,
-        help="The new date and time in 'YYYY:MM:DD HH:MM:SS' format.",
+        help="The new date, optionally with time. Use 'YYYY:MM:DD' or 'YYYY:MM:DD HH:MM:SS'. Time defaults to 12:00:00 if omitted.",
     ),
     tz: Optional[str] = typer.Option(
         None,

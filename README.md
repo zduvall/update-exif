@@ -40,13 +40,21 @@ exif read <path/to/photo.jpg>
 To update the 'date taken' information:
 
 ```sh
-exif update <path/to/photo.jpg> "<YYYY:MM:DD HH:MM:SS>"
+exif update <path/to/photo.jpg> "<date>"
 ```
+
+The date can be provided in two formats:
+-   `"YYYY:MM:DD HH:MM:SS"`
+-   `"YYYY:MM:DD"` (time will default to `12:00:00`)
 
 #### Example
 
 ```sh
+# With full date and time
 exif update "images/IMG_1234.jpg" "2024:07:22 10:30:00"
+
+# With date only (time becomes 12:00:00)
+exif update "images/IMG_1234.jpg" "2024:07:22"
 ```
 
 #### Example with Timezone
