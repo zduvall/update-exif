@@ -4,7 +4,7 @@ from pathlib import Path
 from datetime import datetime
 
 app = typer.Typer(
-    help="A CLI tool to update the EXIF 'date taken' metadata of a photo.",
+    help="A CLI tool to read and update EXIF metadata of a photo.",
     add_completion=False,
 )
 
@@ -15,6 +15,60 @@ def validate_date(date_str: str) -> str:
         return date_str
     except ValueError:
         raise typer.BadParameter("Date must be in 'YYYY:MM:DD HH:MM:SS' format.")
+
+@app.command()
+def read(
+    file_path: Path = typer.Argument(
+        ...,
+        exists=True,
+        file_okay=True,
+        dir_okay=False,
+        readable=True,
+        help="Path to the photo file to read.",
+    )
+):
+    """
+    Reads and displays the EXIF data of a photo.
+    """
+    try:
+        exif_dict = piexif.load(str(file_path))
+        if not any(exif_dict.values()):
+            typer.secho(f"No EXIF data found in '{file_path.name}'.", fg=typer.colors.YELLOW)
+            return
+
+        typer.secho(f"EXIF data for '{file_path.name}':", fg=typer.colors.CYAN)
+        for ifd, data in exif_dict.items():
+            if not data or ifd == "thumbnail":
+                continue
+            
+            typer.secho(f"  {ifd}:", bold=True)
+            for tag, value in data.items():
+                tag_name = piexif.TAGS.get(ifd, {}).get(tag, {}).get("name", f"Unknown Tag {tag}")
+                if isinstance(tag_name, bytes):
+                    tag_name = tag_name.decode(errors="ignore")
+
+                display_value = ""
+                if isinstance(value, bytes):
+                    try:
+                        # Clean null bytes and decode
+                        display_value = value.strip(b'\x00').decode(errors='replace')
+                    except Exception:
+                        display_value = repr(value)
+                else:
+                    display_value = value
+                
+                typer.secho(f"    - {tag_name} ({tag}): {display_value}")
+
+        if exif_dict.get("thumbnail"):
+            typer.secho("  thumbnail: (binary data not displayed)", bold=True)
+
+    except Exception as e:
+        typer.secho(
+            f"An unexpected error occurred while reading '{file_path.name}': {e}",
+            fg=typer.colors.RED,
+            err=True
+        )
+        raise typer.Exit(code=1)
 
 @app.command()
 def update(

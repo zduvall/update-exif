@@ -1,6 +1,6 @@
-# EXIF Date Updater
+# EXIF Tool
 
-A simple command-line tool to update the 'date taken' EXIF metadata on photos, particularly for JPEG files.
+A simple command-line tool to read and update EXIF metadata on photos, particularly for JPEG files.
 
 ## Requirements
 
@@ -21,24 +21,35 @@ A simple command-line tool to update the 'date taken' EXIF metadata on photos, p
     ```sh
     uv pip install -e .
     ```
-    This will make the `exif-updater` command available in your shell.
+    This will make the `exif` command available in your shell.
 
 ## Usage
 
-The tool is run from the command line with the `update` command, providing the path to the image file and the new date as arguments.
+The tool provides two main commands: `read` and `update`.
 
+### Reading EXIF Data
+
+To view the EXIF data of a photo:
 ```sh
-exif-updater update <path/to/photo.jpg> "<YYYY:MM:DD HH:MM:SS>"
+exif read <path/to/photo.jpg>
 ```
 
-### Example
+### Updating EXIF Data
 
+To update the 'date taken' information:
 ```sh
-exif-updater update "images/IMG_1234.jpg" "2024:07:22 10:30:00"
+exif update <path/to/photo.jpg> "<YYYY:MM:DD HH:MM:SS>"
 ```
 
-You can get more information about the command and its arguments with:
+#### Example
 
 ```sh
-exif-updater update --help
+exif update "images/IMG_1234.jpg" "2024:07:22 10:30:00"
+```
+
+You can get more information about any command and its arguments with `--help`:
+
+```sh
+exif read --help
+exif update --help
 ```
