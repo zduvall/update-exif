@@ -19,7 +19,7 @@ A simple command-line tool to read and update EXIF metadata on photos, particula
     _Note: On Windows, the activation command is `.venv\Scripts\activate`_
 4.  Install the project in editable mode:
     ```sh
-    uv pip install -e .
+    uv pip install -e ".[dev]"
     ```
     This will make the `exif` command available in your shell.
 
@@ -44,8 +44,9 @@ exif update <path/to/photo.jpg> "<date>"
 ```
 
 The date can be provided in two formats:
--   `"YYYY:MM:DD HH:MM:SS"`
--   `"YYYY:MM:DD"` (time will default to `12:00:00`)
+
+- `"YYYY:MM:DD HH:MM:SS"`
+- `"YYYY:MM:DD"` (time will default to `12:00:00`)
 
 #### Example
 
