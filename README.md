@@ -16,7 +16,7 @@ A simple command-line tool to update the 'date taken' EXIF metadata on photos, p
     uv venv
     source .venv/bin/activate
     ```
-    *Note: On Windows, the activation command is `.venv\Scripts\activate`*
+    _Note: On Windows, the activation command is `.venv\Scripts\activate`_
 4.  Install the project in editable mode:
     ```sh
     uv pip install -e .
@@ -38,6 +38,7 @@ exif-updater update "images/IMG_1234.jpg" "2024:07:22 10:30:00"
 ```
 
 You can get more information about the command and its arguments with:
+
 ```sh
 exif-updater update --help
 ```
