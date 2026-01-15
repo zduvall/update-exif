@@ -46,14 +46,6 @@ code {
   filter: drop-shadow(0 0 1.2em #6988e6aa);
 }
 
-.creator {
-  font-size: 14px;
-  line-height: 16px;
-  color: var(--ev-c-text-2);
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
 .text {
   font-size: 28px;
   color: var(--ev-c-text-1);
@@ -69,22 +61,6 @@ code {
   line-height: 24px;
   color: var(--ev-c-text-2);
   font-weight: 600;
-}
-
-.react {
-  background: -webkit-linear-gradient(315deg, #087ea4 55%, #7c93ee);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 700;
-}
-
-.ts {
-  background: -webkit-linear-gradient(315deg, #3178c6 45%, #f0dc4e);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 700;
 }
 
 .actions {
@@ -147,18 +123,6 @@ code {
   opacity: 0.8;
   &:last-child {
     border: none;
-  }
-}
-
-@media (max-width: 720px) {
-  .text {
-    font-size: 20px;
-  }
-}
-
-@media (max-width: 620px) {
-  .versions {
-    display: none;
   }
 }
 
