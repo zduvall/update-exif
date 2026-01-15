@@ -1,14 +1,14 @@
 import '@mantine/core/styles.css'
-import { MantineProvider, Button } from '@mantine/core'
+import { MantineProvider, Button, Flex } from '@mantine/core'
 
 function App(): React.JSX.Element {
   const ipcHandle = (): void => window.electron.ipcRenderer.send('ping')
 
   return (
     <MantineProvider>
-      <div>
+      <Flex justify="center" align="center" style={{ height: '100vh' }}>
         <Button onClick={ipcHandle}>Send Ping</Button>
-      </div>
+      </Flex>
     </MantineProvider>
   )
 }
