@@ -1,5 +1,5 @@
 import '@mantine/core/styles.css'
-import { MantineProvider } from '@mantine/core'
+import { MantineProvider, Button } from '@mantine/core'
 
 function App(): React.JSX.Element {
   const ipcHandle = (): void => window.electron.ipcRenderer.send('ping')
@@ -7,7 +7,7 @@ function App(): React.JSX.Element {
   return (
     <MantineProvider>
       <div>
-        <button onClick={ipcHandle}>Send Ping</button>
+        <Button onClick={ipcHandle}>Send Ping</Button>
       </div>
     </MantineProvider>
   )
