@@ -3,15 +3,10 @@ function App(): React.JSX.Element {
 
   return (
     <>
-      <p className="tip">
-        Please try pressing <code>F12</code> to open the devTool
-      </p>
-      <div className="actions">
-        <div className="action">
-          <a target="_blank" rel="noreferrer" onClick={ipcHandle}>
-            Send IPC
-          </a>
-        </div>
+      <div className="action">
+        <a target="_blank" rel="noreferrer" onClick={ipcHandle}>
+          Send IPC
+        </a>
       </div>
     </>
   )
