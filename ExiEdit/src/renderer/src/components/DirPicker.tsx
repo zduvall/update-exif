@@ -16,27 +16,23 @@ const DirPicker = ({ done }: IProps): React.JSX.Element => {
   }
 
   return (
-    <Flex justify="center" align="center" direction="column" style={{ height: '100vh' }}>
+    <Flex justify="center" align="center" direction="column" style={{ height: '100vh' }} gap={'sm'}>
       <Group justify="center">
         <Button onClick={handleSelect}>Select Directory</Button>
-
-        <Button variant="outline" color="red" disabled={!dir} onClick={resetDir}>
-          Reset
-        </Button>
       </Group>
 
       {dir && (
-        <div style={{ marginTop: '1rem' }}>
-          <Text size="xs" c="dimmed" ta="center" mb={5}>
-            Selected Path:
-          </Text>
+        <>
           <Code block style={{ textAlign: 'center' }}>
             {dir}
           </Code>
           <Group justify="center">
+            <Button variant="outline" color="red" disabled={!dir} onClick={resetDir}>
+              Reset
+            </Button>
             <Button onClick={done}>Continue</Button>
           </Group>
-        </div>
+        </>
       )}
     </Flex>
   )
