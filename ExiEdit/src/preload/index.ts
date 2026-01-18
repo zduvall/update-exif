@@ -7,7 +7,6 @@ import { electronAPI } from '@electron-toolkit/preload'
 // But the api object allows me to use things like `window.api.selectFolder()`
 // instead, so the custom api is more abstracted.
 const api = {
-  /** Prompt user to select a folder */
   selectFolder: () => ipcRenderer.invoke('dialog:openDirectory')
 }
 
