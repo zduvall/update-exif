@@ -1,7 +1,6 @@
 import fs from 'fs'
 import { ipcRenderer } from 'electron'
 import Path from 'node:path'
-import { PATH_DELIMITER as PD } from './constants'
 
 /**
  * A collection of booleans indicating the current OS.
@@ -132,7 +131,7 @@ function isDir(path: string) {
  * @returns the resolved directory
  */
 function resolveDir(srcDir: string, targetDir: string) {
-  if (targetDir.startsWith(`.${PD}`)) return `${srcDir}${targetDir.slice(1)}`
+  if (targetDir.startsWith(`.${PATH_DELIMITER}`)) return `${srcDir}${targetDir.slice(1)}`
   return targetDir
 }
 
