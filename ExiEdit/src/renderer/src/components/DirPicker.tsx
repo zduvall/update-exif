@@ -5,7 +5,7 @@ const DirPicker = (): React.JSX.Element => {
   const [path, setPath] = useState<string | null>(null)
 
   const handleSelect = async (): Promise<void> => {
-    // We use window.api because that is where we attached selectFolder
+    // window.api is defined in preload script and exposed to the renderer process
     const selectedPath = await window.api.selectFolder()
     if (selectedPath) {
       setPath(selectedPath)
