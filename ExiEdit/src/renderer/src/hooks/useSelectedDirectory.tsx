@@ -5,7 +5,7 @@ import { useLocalStorage } from '@mantine/hooks'
  * @returns [directory, setDirectory, removeDirectory]
  */
 const useSelectedDirectory = () => {
-  const [dir, setDir, removeDir] = useLocalStorage({
+  const [dir, setDir, removeDir] = useLocalStorage<string>({
     key: 'dir',
     defaultValue: ''
   })
