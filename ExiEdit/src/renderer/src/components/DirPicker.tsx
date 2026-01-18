@@ -1,7 +1,11 @@
 import { Button, Group, Text, Code, Flex } from '@mantine/core'
 import useSelectedDirectory from '@renderer/hooks/useSelectedDirectory'
 
-const DirPicker = (): React.JSX.Element => {
+interface IProps {
+  done: () => void
+}
+
+const DirPicker = ({ done }: IProps): React.JSX.Element => {
   const [dir, setDir, resetDir] = useSelectedDirectory()
 
   const handleSelect = async (): Promise<void> => {
@@ -29,6 +33,9 @@ const DirPicker = (): React.JSX.Element => {
           <Code block style={{ textAlign: 'center' }}>
             {dir}
           </Code>
+          <Group justify="center">
+            <Button onClick={done}>Continue</Button>
+          </Group>
         </div>
       )}
     </Flex>

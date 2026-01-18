@@ -9,7 +9,8 @@ function App(): React.JSX.Element {
 
   return (
     <MantineProvider>
-      <DirPicker />
+      {page === Pages.DirPicker && <DirPicker done={() => setPage(Pages.Photos)} />}
+      {page === Pages.Photos && <div>Photos</div>}
     </MantineProvider>
   )
 }
