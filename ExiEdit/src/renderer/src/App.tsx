@@ -5,6 +5,8 @@ import { useState } from 'react'
 import { Pages } from './constants'
 
 function App(): React.JSX.Element {
+  const [page, setPage] = useState<Pages>(Pages.DirPicker)
+
   return (
     <MantineProvider>
       <DirPicker />
