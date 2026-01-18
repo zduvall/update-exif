@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Button, Group, Text, Paper, Code } from '@mantine/core'
+import { Button, Group, Text, Code, Flex } from '@mantine/core'
 
 const DirPicker = (): React.JSX.Element => {
   const [path, setPath] = useState<string | null>(null)
@@ -13,7 +13,7 @@ const DirPicker = (): React.JSX.Element => {
   }
 
   return (
-    <Paper p="md">
+    <Flex justify="center" align="center" style={{ height: '100vh' }}>
       <Group justify="center">
         <Button onClick={handleSelect}>Select Directory</Button>
 
@@ -32,7 +32,7 @@ const DirPicker = (): React.JSX.Element => {
           </Code>
         </div>
       )}
-    </Paper>
+    </Flex>
   )
 }
 
