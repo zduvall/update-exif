@@ -1,14 +1,11 @@
 import '@mantine/core/styles.css'
-import { MantineProvider, Button, Flex } from '@mantine/core'
+import { MantineProvider } from '@mantine/core'
+import DirPicker from './components/DirPicker'
 
 function App(): React.JSX.Element {
-  const ipcHandle = (): void => window.electron.ipcRenderer.send('ping')
-
   return (
     <MantineProvider>
-      <Flex justify="center" align="center" style={{ height: '100vh' }}>
-        <Button onClick={ipcHandle}>Send Ping</Button>
-      </Flex>
+      <DirPicker />
     </MantineProvider>
   )
 }
