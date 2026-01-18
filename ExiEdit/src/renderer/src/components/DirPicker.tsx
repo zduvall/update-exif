@@ -13,7 +13,7 @@ const DirPicker = (): React.JSX.Element => {
   }
 
   return (
-    <Flex justify="center" align="center" style={{ height: '100vh' }}>
+    <Flex justify="center" align="center" direction="column" style={{ height: '100vh' }}>
       <Group justify="center">
         <Button onClick={handleSelect}>Select Directory</Button>
 
