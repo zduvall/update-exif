@@ -1,5 +1,9 @@
 import { homedir } from 'os'
 
+enum Pages {
+  DirPicker = 'dir-picker'
+}
+
 const HOME_DIR = homedir()
 // const DESKTOP_DIR = `${HOME_DIR}/Desktop`;
 const CSS_FILE_PREFIX = 'file://'
@@ -20,4 +24,4 @@ const OS = {
  */
 const PATH_DELIMITER = OS.isWindows ? '\\' : '/'
 
-export { HOME_DIR, CSS_FILE_PREFIX, OS, PATH_DELIMITER }
+export { HOME_DIR, CSS_FILE_PREFIX, OS, PATH_DELIMITER, Pages }
