@@ -2,7 +2,12 @@ import { contextBridge, ipcRenderer } from 'electron'
 import { electronAPI } from '@electron-toolkit/preload'
 
 // Custom APIs for renderer
+// NOTE: in react, I could do something like this:
+// - `window.electron.ipcRenderer.send('dialog:openDirectory')`
+// But the api object allows me to use things like `window.api.selectFolder()`
+// instead, so the custom api is more abstracted.
 const api = {
+  /** Prompt user to select a folder */
   selectFolder: () => ipcRenderer.invoke('dialog:openDirectory')
 }
 
