@@ -2,15 +2,15 @@ import { useLocalStorage } from '@mantine/hooks'
 
 /**
  * React hook for persisting the selected directory path in local storage.
- * @returns [directory, setDirectory, removeDirectory]
+ * @returns [directory, setDirectory, resetDirectory]
  */
 const useSelectedDirectory = () => {
-  const [dir, setDir, removeDir] = useLocalStorage<string>({
+  const [dir, setDir, resetDir] = useLocalStorage<string | null>({
     key: 'dir',
-    defaultValue: ''
+    defaultValue: null
   })
 
-  return [dir, setDir, removeDir] as const
+  return [dir, setDir, resetDir] as const
 }
 
 export default useSelectedDirectory
