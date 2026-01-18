@@ -3,6 +3,22 @@ import { ipcRenderer } from 'electron'
 import Path from 'node:path'
 import { PATH_DELIMITER as PD } from './constants'
 
+/**
+ * A collection of booleans indicating the current OS.
+ */
+const OS = {
+  isMac: process.platform === 'darwin',
+  isWindows: process.platform === 'win32'
+  // isLinux: process.platform === 'linux',
+}
+
+/**
+ * The path delimiter for the current OS.
+ *
+ * NOTE: duplicated in store.ts, keep in sync
+ */
+export const PATH_DELIMITER = OS.isWindows ? '\\' : '/'
+
 // ================================= fs utils ==================================
 
 // // currently not used, but might be useful in the future
