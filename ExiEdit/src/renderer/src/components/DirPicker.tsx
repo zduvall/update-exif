@@ -1,4 +1,4 @@
-import { Button, Group, Text, Code, Flex } from '@mantine/core'
+import { Button, Group, Code, Flex } from '@mantine/core'
 import useSelectedDirectory from '@renderer/hooks/useSelectedDirectory'
 
 interface IProps {
