@@ -2,15 +2,15 @@ import '@mantine/core/styles.css'
 import { MantineProvider } from '@mantine/core'
 import DirPicker from './components/DirPicker'
 import { useState } from 'react'
-import { Pages } from './constants'
+import { Page } from './constants'
 
 function App(): React.JSX.Element {
-  const [page, setPage] = useState<Pages>(Pages.DirPicker)
+  const [page, setPage] = useState<Page>(Page.DirPicker)
 
   return (
     <MantineProvider>
-      {page === Pages.DirPicker && <DirPicker done={() => setPage(Pages.Photos)} />}
-      {page === Pages.Photos && <div>Photos</div>}
+      {page === Page.DirPicker && <DirPicker done={() => setPage(Page.Photos)} />}
+      {page === Page.Photos && <div>Photos</div>}
     </MantineProvider>
   )
 }

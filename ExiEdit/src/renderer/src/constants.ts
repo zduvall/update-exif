@@ -1,6 +1,6 @@
-enum Pages {
+enum Page {
   DirPicker = 'dir-picker',
   Photos = 'photos'
 }
 
-export { Pages }
+export { Page }
