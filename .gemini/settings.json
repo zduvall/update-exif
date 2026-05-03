@@ -1,4 +1,7 @@
 {
   // https://geminicli.com/docs/cli/sandbox/#configuration
-  "tools": { "sandbox": true }
+  // See also ~/.zshrc for SEATBELT_PROFILE env var which works with this setting
+  "tools": {
+    "sandbox": "sandbox-exec"
+  }
 }
