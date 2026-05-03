@@ -1,0 +1,4 @@
+{
+  // https://geminicli.com/docs/cli/sandbox/#configuration
+  "tools": { "sandbox": true }
+}
