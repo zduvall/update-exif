@@ -1,5 +1,6 @@
-import { app, shell, BrowserWindow, ipcMain, dialog } from 'electron'
+import { app, shell, BrowserWindow, ipcMain, dialog, protocol, net } from 'electron'
 import { join } from 'path'
+import { pathToFileURL } from 'node:url'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 
@@ -42,6 +43,13 @@ app.whenReady().then(() => {
   // Set app user model id for windows
   electronApp.setAppUserModelId('com.electron')
 
+  // Register custom protocol for local media. Allows loading photos from the
+  // filesystem using a URL like `media://path/to/photo.jpg`
+  protocol.handle('media', (request) => {
+    const url = request.url.replace('media://', '')
+    return net.fetch(pathToFileURL(decodeURIComponent(url)).toString())
+  })
+
   // Default open or close DevTools by F12 in development
   // and ignore CommandOrControl + R in production.
   // see https://github.com/alex8088/electron-toolkit/tree/master/packages/utils
@@ -58,6 +66,23 @@ app.whenReady().then(() => {
       properties: ['openDirectory']
     })
     return canceled ? null : filePaths[0]
+  })
+
+  const FILE_EXTENSIONS = ['.jpg', '.jpeg', '.gif', '.png', '.apng', '.avif', '.webp']
+
+  // Photo scanning handler
+  ipcMain.handle('scan-photos', async (_, dirPath: string) => {
+    const fs = await import('fs')
+    const Path = await import('path')
+    try {
+      const files = fs.readdirSync(dirPath)
+      return files
+        .filter((name) => FILE_EXTENSIONS.some((ext) => name.toLowerCase().endsWith(ext)))
+        .map((fileName) => Path.join(dirPath, fileName))
+    } catch (err) {
+      console.error(err)
+      return []
+    }
   })
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
