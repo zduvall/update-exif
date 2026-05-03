@@ -44,7 +44,8 @@ app.whenReady().then(() => {
   electronApp.setAppUserModelId('com.electron')
 
   // Register custom protocol for local media. Allows loading photos from the
-  // filesystem using a URL like `media://path/to/photo.jpg`
+  // filesystem using a URL like `media://path/to/photo.jpg`. See also the
+  // index.html Content-Security-Policy which allows img-src from media: URLs.
   protocol.handle('media', (request) => {
     const url = request.url.replace('media://', '')
     return net.fetch(pathToFileURL(decodeURIComponent(url)).toString())
