@@ -7,7 +7,8 @@ import { electronAPI } from '@electron-toolkit/preload'
 // But the api object allows me to use things like `window.api.selectFolder()`
 // instead, so the custom api is more abstracted.
 const api = {
-  selectFolder: () => ipcRenderer.invoke('dialog:openDirectory')
+  selectFolder: () => ipcRenderer.invoke('dialog:openDirectory'),
+  scanPhotos: (dirPath: string) => ipcRenderer.invoke('scan-photos', dirPath)
 }
 
 // Use `contextBridge` APIs to expose Electron APIs to

@@ -6,6 +6,8 @@ declare global {
     api: {
       /** Prompt user to select a folder */
       selectFolder: () => Promise<string | null>
+      /** Scan folder for photos */
+      scanPhotos: (dirPath: string) => Promise<string[]>
     }
   }
 }
