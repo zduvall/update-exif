@@ -12,8 +12,8 @@ import {
   Paper,
   Code
 } from '@mantine/core'
-import { useStore } from '../store'
-import { Page } from '../constants'
+import { useStore } from '../../store'
+import { Page } from '../../constants'
 
 /**
  * This component displays the photos in the selected directory `dir`.
