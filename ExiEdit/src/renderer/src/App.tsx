@@ -17,3 +17,12 @@ function App(): React.JSX.Element {
 }
 
 export default App
+
+// FIXME
+// I added in all the fs utils
+//
+// [x] Need to make a directory picker
+// [ ] Need to read all photos in the directory and display them in a grid
+// [ ] Need to add in this package: "exiftool-vendored": "^34.3.0"
+// [ ] Need to add in the ability to edit the exif data of the photos
+// [ ] Need to add in the ability to save the edited exif data back to the photos
