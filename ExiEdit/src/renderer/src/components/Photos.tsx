@@ -34,14 +34,14 @@ const Photos = () => {
           </Text>
           <Slider
             min={1}
-            max={10}
+            max={6}
             step={1}
             value={columns}
             onChange={setColumns}
             marks={[
               { value: 1, label: '1' },
-              { value: 5, label: '5' },
-              { value: 10, label: '10' }
+              { value: 3, label: '3' },
+              { value: 6, label: '6' }
             ]}
             mb="xl"
           />
