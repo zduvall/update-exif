@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
 import useSelectedDirectory from '@renderer/hooks/useSelectedDirectory'
-import { SimpleGrid, Image, Text, Box, Container, Button, Group } from '@mantine/core'
+import { SimpleGrid, Text, Box, Container, Button, Group } from '@mantine/core'
 import { useStore } from '../../store'
 import { Page } from '../../constants'
 import Header from './Header'
+import Image from './Image'
 
 /**
  * This component displays the photos in the selected directory `dir`.
@@ -44,13 +45,7 @@ const Photos = () => {
       <Container size="xl" py="md">
         <SimpleGrid cols={columns} spacing="md">
           {photos.map((photo) => (
-            <Image
-              key={photo}
-              src={`media://${photo}`}
-              alt={photo}
-              radius="md"
-              fallbackSrc="https://placehold.co/600x400?text=Error"
-            />
+            <Image key={photo} photo={photo} />
           ))}
         </SimpleGrid>
 
