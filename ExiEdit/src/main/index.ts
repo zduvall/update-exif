@@ -3,6 +3,7 @@ import { join } from 'path'
 import { pathToFileURL } from 'node:url'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
+import { exiftool } from 'exiftool-vendored'
 
 function createWindow(): void {
   // Create the browser window.
@@ -83,6 +84,16 @@ app.whenReady().then(() => {
     } catch (err) {
       console.error(err)
       return []
+    }
+  })
+
+  // Read exif data handler
+  ipcMain.handle('read-exif', async (_, filePath: string) => {
+    try {
+      return await exiftool.read(filePath)
+    } catch (err) {
+      console.error(`Failed to read EXIF for ${filePath}:`, err)
+      throw err
     }
   })
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

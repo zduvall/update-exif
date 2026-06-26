@@ -8,7 +8,8 @@ import { electronAPI } from '@electron-toolkit/preload'
 // instead, so the custom api is more abstracted.
 const api = {
   selectFolder: () => ipcRenderer.invoke('dialog:openDirectory'),
-  scanPhotos: (dirPath: string) => ipcRenderer.invoke('scan-photos', dirPath)
+  scanPhotos: (dirPath: string) => ipcRenderer.invoke('scan-photos', dirPath),
+  readExif: (filePath: string) => ipcRenderer.invoke('read-exif', filePath)
 }
 
 // Use `contextBridge` APIs to expose Electron APIs to

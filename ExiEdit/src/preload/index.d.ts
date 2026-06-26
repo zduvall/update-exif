@@ -1,4 +1,5 @@
 import { ElectronAPI } from '@electron-toolkit/preload'
+import { Tags } from 'exiftool-vendored'
 
 declare global {
   interface Window {
@@ -8,6 +9,8 @@ declare global {
       selectFolder: () => Promise<string | null>
       /** Scan folder for photos */
       scanPhotos: (dirPath: string) => Promise<string[]>
+      /** Read EXIF tags from a photo file */
+      readExif: (filePath: string) => Promise<Tags>
     }
   }
 }
