@@ -14,6 +14,7 @@ const Photos = () => {
   const [dir] = useSelectedDirectory()
   const [photos, setPhotos] = useState<string[]>([])
   const [columns, setColumns] = useState<number>(4)
+  const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null)
   const setPage = useStore((state) => state.setPage)
 
   useEffect(() => {
@@ -45,7 +46,12 @@ const Photos = () => {
       <Container size="xl" py="md">
         <SimpleGrid cols={columns} spacing="md">
           {photos.map((photo) => (
-            <Image key={photo} photo={photo} />
+            <Image
+              key={photo}
+              photo={photo}
+              onClick={() => setSelectedPhoto(photo)}
+              isSelected={selectedPhoto === photo}
+            />
           ))}
         </SimpleGrid>
 
