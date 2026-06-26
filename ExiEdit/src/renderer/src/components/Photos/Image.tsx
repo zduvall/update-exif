@@ -1,4 +1,4 @@
-import { Image as MantineImage } from '@mantine/core'
+import { Image as MantineImage, Container } from '@mantine/core'
 
 interface IProps {
   /** The local file path of the photo to display */
@@ -11,15 +11,17 @@ interface IProps {
 
 const Image = ({ photo, onClick, isSelected }: IProps) => {
   return (
-    <MantineImage
-      key={photo}
-      src={`media://${photo}`}
-      alt={photo}
-      radius="md"
-      fallbackSrc="https://placehold.co/600x400?text=Error"
-      onClick={onClick}
-      style={style(isSelected)}
-    />
+    <Container>
+      <MantineImage
+        key={photo}
+        src={`media://${photo}`}
+        alt={photo}
+        radius="md"
+        fallbackSrc="https://placehold.co/600x400?text=Error"
+        onClick={onClick}
+        style={style(isSelected)}
+      />
+    </Container>
   )
 }
 
