@@ -1,8 +1,11 @@
 import { Image as MantineImage } from '@mantine/core'
 
 interface IProps {
+  /** The local file path of the photo to display */
   photo: string
+  /** Callback function to handle click events on the image */
   onClick: () => void
+  /** Indicates whether the image is currently selected */
   isSelected: boolean
 }
 
