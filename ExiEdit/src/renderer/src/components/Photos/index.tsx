@@ -1,19 +1,9 @@
 import { useEffect, useState } from 'react'
 import useSelectedDirectory from '@renderer/hooks/useSelectedDirectory'
-import {
-  SimpleGrid,
-  Image,
-  Slider,
-  Text,
-  Box,
-  Container,
-  Button,
-  Group,
-  Paper,
-  Code
-} from '@mantine/core'
+import { SimpleGrid, Image, Text, Box, Container, Button, Group } from '@mantine/core'
 import { useStore } from '../../store'
 import { Page } from '../../constants'
+import Header from './Header'
 
 /**
  * This component displays the photos in the selected directory `dir`.
@@ -44,49 +34,12 @@ const Photos = () => {
 
   return (
     <Box>
-      <Paper
-        shadow="xs"
-        p="md"
-        withBorder
-        style={{
-          position: 'sticky',
-          top: 0,
-          zIndex: 10,
-          backgroundColor: 'var(--mantine-color-body)'
-        }}
-      >
-        <Container size="xl">
-          <Group justify="space-between" align="center">
-            <Group>
-              <Button variant="subtle" onClick={() => setPage(Page.DirPicker)}>
-                ← Back
-              </Button>
-              <Box>
-                <Text size="xs" c="dimmed" fw={500} lts={1} tt="uppercase">
-                  Directory
-                </Text>
-                <Code color="blue.1" c="blue.9">
-                  {dir}
-                </Code>
-              </Box>
-            </Group>
-
-            <Box w={250}>
-              <Text size="xs" mb={5} fw={500}>
-                Grid Columns: {columns}
-              </Text>
-              <Slider
-                min={1}
-                max={10}
-                step={1}
-                value={columns}
-                onChange={setColumns}
-                label={(value) => `${value} cols`}
-              />
-            </Box>
-          </Group>
-        </Container>
-      </Paper>
+      <Header
+        dir={dir}
+        columns={columns}
+        setColumns={setColumns}
+        onBack={() => setPage(Page.DirPicker)}
+      />
 
       <Container size="xl" py="md">
         <SimpleGrid cols={columns} spacing="md">
