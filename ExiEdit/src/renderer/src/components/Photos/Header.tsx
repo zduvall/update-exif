@@ -13,6 +13,7 @@ const Header = ({ dir, columns, setColumns, onBack }: IProps) => {
       shadow="xs"
       p="md"
       withBorder
+      w="100vw"
       style={{
         position: 'sticky',
         top: 0,
